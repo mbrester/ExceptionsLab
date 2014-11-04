@@ -17,8 +17,14 @@ public class InputOutputGui {
 
     public void startConversation() {
         
-        String fullName = JOptionPane.showInputDialog("Enter full name:");
-        String lastName = nameService.extractLastName(fullName);
+       String fullName = JOptionPane.showInputDialog("Enter full name:");
+        String lastName = "";
+       try{
+           lastName = nameService.extractLastName(fullName);
+       }catch(IllegalNameFormatException e){
+           JOptionPane.showMessageDialog(null,"You have entered an invalid Entry");
+           return;
+       }
         String msg = "Your last name is: " + lastName;
         JOptionPane.showMessageDialog(null, msg);
         
